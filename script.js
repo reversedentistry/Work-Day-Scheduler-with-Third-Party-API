@@ -1,23 +1,30 @@
 var currentDay = document.querySelector("#currentDay"); 
-var currentTime = moment().format();
-var startHour = moment("9:00", "h:mm");
-
+var currentHour = moment().format("h");
+var startHour = moment("9", "h");
+// may need to move this to limit scope later^^^^
 const scheduleContainer = $(".container");
 const workDayHours = 9; 
 
 currentDay.textContent = moment().format("dddd, MMMM Do, YYYY");
 
 function init() {
-    currentSchedule(); 
+    createSchedule(); 
+    // display correct styling for past, current, and future hours
+    if (currentHour.isAfter(startHour)) {
+        textArea.addClass("past"); 
+    } else if (currentHour.isBefore(startHour)) {
+        textArea.addClass("future"); 
+    } else if (currentHour.isSame(startHour)) {
+        textArea.addClass("present") 
+    }
 };
 
-function currentSchedule () {
+function createSchedule () {
     for (let i = 0; i < workDayHours; i++) {
     
     let timeBlock = $("<div>");
-    timeBlock.addClass("time-block", "row"); 
+    timeBlock.addClass("time-block row"); 
 
-    // let pHour = $("<p>"); 
     let hour = $("<label>"); 
     hour.text(startHour.format("h a")); 
     hour.attr("for", "block-desc"); 
@@ -33,7 +40,7 @@ function currentSchedule () {
     let saveBtnIcon = $("<i>"); 
     saveBtnIcon.addClass("fa-solid fa-floppy-disk"); 
 
-    hour.appendTo("pHour"); 
+    
     saveBtnIcon.appendTo("saveButton");
 
     timeBlock.append(hour, textArea, saveButton); 
@@ -43,6 +50,10 @@ function currentSchedule () {
 }
 }
 
+
 init(); 
+
+
+
 // <i class="fa-solid fa-floppy-disk"></i>
 
