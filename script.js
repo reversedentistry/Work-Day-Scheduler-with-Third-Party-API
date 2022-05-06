@@ -24,11 +24,16 @@ function currentSchedule () {
 
     let saveButton = $("<button>"); 
     saveButton.addClass("saveBtn");
- // can I add a font-awesome attribute/class the same way???    
+ // can I add a fontawesome attribute/class the same way???    
     let saveBtnIcon = $("<i>"); 
     saveBtnIcon.addClass("fa-solid fa-floppy-disk"); 
 
+    saveBtnIcon.appendTo("saveButton"); 
 
+    timeBlock.append(hour, textArea, saveButton); 
+    scheduleContainer.append(timeBlock); 
+
+    startHour.add(1, "h"); 
 }
 }
 
