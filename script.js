@@ -1,11 +1,15 @@
 var currentDay = document.querySelector("#currentDay"); 
-var currentTime = moment().format()
-var startHour = moment("9AM, h:mm");
+var currentTime = moment().format();
+var startHour = moment("9:00", "h:mm");
 
 const scheduleContainer = $(".container");
 const workDayHours = 9; 
 
-currentDay.textContent = moment().format("dddd, MMMM Do, YYYY"); 
+currentDay.textContent = moment().format("dddd, MMMM Do, YYYY");
+
+function init() {
+    currentSchedule(); 
+};
 
 function currentSchedule () {
     for (let i = 0; i < workDayHours; i++) {
@@ -13,10 +17,11 @@ function currentSchedule () {
     let timeBlock = $("<div>");
     timeBlock.addClass("time-block", "row"); 
 
+    let pHour = $("<p>"); 
     let hour = $("<label>"); 
     hour.text(startHour.format("h a")); 
     hour.attr("for", "block-desc"); 
-    hour.addClass("hour"); 
+    pHour.addClass("hour"); 
 
     let textArea = $("<textarea>"); 
     textArea.attr("id", "block-desc"); 
@@ -28,7 +33,8 @@ function currentSchedule () {
     let saveBtnIcon = $("<i>"); 
     saveBtnIcon.addClass("fa-solid fa-floppy-disk"); 
 
-    saveBtnIcon.appendTo("saveButton"); 
+    hour.appendTo("pHour"); 
+    saveBtnIcon.appendTo("saveButton");
 
     timeBlock.append(hour, textArea, saveButton); 
     scheduleContainer.append(timeBlock); 
@@ -37,6 +43,6 @@ function currentSchedule () {
 }
 }
 
-
+init(); 
 // <i class="fa-solid fa-floppy-disk"></i>
 
