@@ -17,11 +17,11 @@ function currentSchedule () {
     let timeBlock = $("<div>");
     timeBlock.addClass("time-block", "row"); 
 
-    let pHour = $("<p>"); 
+    // let pHour = $("<p>"); 
     let hour = $("<label>"); 
     hour.text(startHour.format("h a")); 
     hour.attr("for", "block-desc"); 
-    pHour.addClass("hour"); 
+    hour.addClass("hour"); 
 
     let textArea = $("<textarea>"); 
     textArea.attr("id", "block-desc"); 
