@@ -1,5 +1,6 @@
 var currentDay = document.querySelector("#currentDay"); 
-var currentHour = moment("", "h");
+var currentHour = moment();
+console.log(currentHour.format("h"));
 
 // may need to move this to limit scope later^^^^
 const scheduleContainer = $(".container");
@@ -44,12 +45,12 @@ function createSchedule () {
 
     startHour.add(1, "h"); 
 
-    if (currentHour.isAfter(startHour)) {
+    if (currentHour.hour() > (startHour.hour())) {
         textArea.addClass("past"); 
-    } else if (currentHour.isBefore(startHour)) {
+    } else if (currentHour.hour() < (startHour.hour())) {
         textArea.addClass("future"); 
-    } else if (currentHour.isSame(startHour)) {
-        textArea.addClass("present") 
+    } else if (currentHour.hour() === (startHour.hour())) {
+        textArea.addClass("present"); 
     }
     console.log(startHour.format("h"));
 }
@@ -58,7 +59,7 @@ function createSchedule () {
 
 init(); 
 
-
+// if (startHour.isBefore(currentHour))
 
 // <i class="fa-solid fa-floppy-disk"></i>
 
