@@ -31,7 +31,8 @@ function createSchedule () {
     textArea.addClass("col-8 col-md-10 col-lg-9")
 
     let saveButton = $("<button>"); 
-    saveButton.addClass("saveBtn col-2 col-md-1");
+    saveButton.addClass("saveBtn col-2 col-md-1")
+    saveButton.text("Save");
     saveButton.attr("id", "eventSave");
  // can I add a fontawesome attribute/class the same way???    
     let saveBtnIcon = $("<i>"); 
@@ -58,7 +59,9 @@ function createSchedule () {
 
 init(); 
 
-document.query
+$("button").on("click", function (event) {
+    let
+})
 
 // <i class="fa-solid fa-floppy-disk"></i>
 
