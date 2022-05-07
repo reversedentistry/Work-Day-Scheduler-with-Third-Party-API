@@ -4,23 +4,26 @@ console.log(currentHour.format("h"));
 
 const scheduleContainer = $(".container");
 
-
+// Display the current day at the top of page
 currentDay.textContent = moment().format("dddd, MMMM Do, YYYY");
 
+// Define initialization function
 function init() {
     createSchedule(); 
-        
-    
 };
 
 function createSchedule () {
+    // Define starting variables such as what chosen time the work day starts, how long the day is
     let startHour = moment().set("hour", "9");
     const workDayHours = 9; 
+
     for (let i = 0; i < workDayHours; i++) {
     
+    // Define div that holds each individual row 
     let timeBlock = $("<div>");
-    timeBlock.addClass("row"); 
+    timeBlock.addClass("row time-block"); 
 
+    
     let hour = $("<label>"); 
     hour.text(startHour.format("h a")); 
     hour.attr("for", "block-desc"); 
@@ -29,12 +32,16 @@ function createSchedule () {
     let textArea = $("<textarea>"); 
     textArea.attr("id", "block-desc"); 
     textArea.attr("name", "block-desc"); 
-    textArea.addClass("col-8 col-md-10 col-lg-9")
+    textArea.attr("data-time", startHour.format("H A dddd, MMMM Do, YYYY")); 
+    textArea.addClass("col-12 col-md-10 col-lg-9 description")
+    
+    let eventInput = localStorage.getItem(startHour.format("H A dddd, MMMM Do, YYYY")); 
+    if (eventInput != null) {
+        textArea.text(eventInput); 
+    }
 
     let saveButton = $("<button>"); 
     saveButton.addClass("saveBtn col-2 col-md-1")
-    saveButton.attr("id", "eventSave");
- // can I add a fontawesome attribute/class the same way???    
     let saveBtnIcon = $("<i>"); 
     saveBtnIcon.addClass("fa-solid fa-floppy-disk"); 
 
@@ -56,17 +63,16 @@ function createSchedule () {
 
     console.log(startHour.format("h"));
 }
-}
-
-init(); 
-
-$("button").on("click", function (event) {
+$(".saveBtn").on("click", function (event) {
     event.preventDefault(); 
     let btnClicked = $(event.target); 
-    let eventInput = $("textarea").val(); 
-    localStorage.setItem("plans", eventInput); 
+    let eventInput = btnClicked.siblings("textarea");  
+    localStorage.setItem(eventInput.attr("data-time"), eventInput.val().trim()); 
     
 })
+}
 
 
+
+init(); 
 
