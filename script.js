@@ -2,7 +2,6 @@ var currentDay = document.querySelector("#currentDay");
 var currentHour = moment();
 console.log(currentHour.format("h"));
 
-// may need to move this to limit scope later^^^^
 const scheduleContainer = $(".container");
 const workDayHours = 9; 
 
@@ -10,8 +9,7 @@ currentDay.textContent = moment().format("dddd, MMMM Do, YYYY");
 
 function init() {
     createSchedule(); 
-    // display correct styling for past, current, and future hours
-     
+        
     
 };
 
@@ -20,19 +18,21 @@ function createSchedule () {
     for (let i = 0; i < workDayHours; i++) {
     
     let timeBlock = $("<div>");
-    timeBlock.addClass("time-block row"); 
+    timeBlock.addClass("row"); 
 
     let hour = $("<label>"); 
     hour.text(startHour.format("h a")); 
     hour.attr("for", "block-desc"); 
-    hour.addClass("hour"); 
+    hour.addClass("hour col-2 col-md-1"); 
 
     let textArea = $("<textarea>"); 
     textArea.attr("id", "block-desc"); 
     textArea.attr("name", "block-desc"); 
+    textArea.addClass("col-8 col-md-10 col-lg-9")
 
     let saveButton = $("<button>"); 
-    saveButton.addClass("saveBtn");
+    saveButton.addClass("saveBtn col-2 col-md-1");
+    saveButton.attr("id", "eventSave");
  // can I add a fontawesome attribute/class the same way???    
     let saveBtnIcon = $("<i>"); 
     saveBtnIcon.addClass("fa-solid fa-floppy-disk"); 
@@ -56,10 +56,9 @@ function createSchedule () {
 }
 }
 
-
 init(); 
 
-// if (startHour.isBefore(currentHour))
+document.query
 
 // <i class="fa-solid fa-floppy-disk"></i>
 
