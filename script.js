@@ -1,6 +1,6 @@
 var currentDay = document.querySelector("#currentDay"); 
 var currentHour = moment("", "h");
-var startHour = moment("9", "h");
+
 // may need to move this to limit scope later^^^^
 const scheduleContainer = $(".container");
 const workDayHours = 9; 
@@ -10,10 +10,12 @@ currentDay.textContent = moment().format("dddd, MMMM Do, YYYY");
 function init() {
     createSchedule(); 
     // display correct styling for past, current, and future hours
+     
     
 };
 
 function createSchedule () {
+    let startHour = moment("9", "h");
     for (let i = 0; i < workDayHours; i++) {
     
     let timeBlock = $("<div>");
@@ -42,8 +44,6 @@ function createSchedule () {
 
     startHour.add(1, "h"); 
 
-    
-    // Error below: isAfter will not work after anything but a moment; currentHour is currently a moment, but how to change startHour to moment?
     if (currentHour.isAfter(startHour)) {
         textArea.addClass("past"); 
     } else if (currentHour.isBefore(startHour)) {
@@ -51,6 +51,7 @@ function createSchedule () {
     } else if (currentHour.isSame(startHour)) {
         textArea.addClass("present") 
     }
+    console.log(startHour.format("h"));
 }
 }
 
