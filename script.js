@@ -60,8 +60,12 @@ function createSchedule () {
 init(); 
 
 $("button").on("click", function (event) {
-    let
+    event.preventDefault(); 
+    let btnClicked = $(event.target); 
+    let eventInput = $("textarea").val(); 
+    localStorage.setItem("plans", eventInput); 
+    
 })
 
-// <i class="fa-solid fa-floppy-disk"></i>
+
 
