@@ -81,15 +81,12 @@ $("button").on("click", function (event) {
     // Searches for the sibling textarea element within the parent div element
     let eventInput = btnClicked.siblings("textarea");  
 
-    // When save button is clicked, if something has been entered, locally stores the textarea's data attribute as the key and its text content as the corresponding string 
-    if (eventInput.val()) {
-        localStorage.setItem(eventInput.attr("data-time"), eventInput.val().trim()); 
-    } else {
-        return; 
-    }
+    // When save button is clicked, locally stores the textarea's data attribute as the key and its text content as the corresponding string 
+    localStorage.setItem(eventInput.attr("data-time"), eventInput.val().trim()); 
+   
  
  
-})} 
+})}; 
 
 // Call initialization button 
 init(); 
