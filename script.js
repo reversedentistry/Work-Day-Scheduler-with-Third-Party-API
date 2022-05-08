@@ -74,19 +74,22 @@ function createSchedule () {
 }
 
 // Creates a click event for each save button 
-$(".saveBtn").on("click", function (event) {
+$("button").on("click", function (event) {
     event.preventDefault(); 
     let btnClicked = $(event.target); 
 
     // Searches for the sibling textarea element within the parent div element
     let eventInput = btnClicked.siblings("textarea");  
 
-    // When save button is clicked, locally stores the textarea's data attribute as the key and its text content as the corresponding string 
-    localStorage.setItem(eventInput.attr("data-time"), eventInput.val().trim()); 
-    
-})
-}
+    // When save button is clicked, if something has been entered, locally stores the textarea's data attribute as the key and its text content as the corresponding string 
+    if (eventInput.val()) {
+        localStorage.setItem(eventInput.attr("data-time"), eventInput.val().trim()); 
+    } else {
+        return; 
+    }
+ 
+ 
+})} 
 
 // Call initialization button 
 init(); 
-
