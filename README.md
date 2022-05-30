@@ -20,7 +20,16 @@ Though there is a CSS page provided, external CSS resources were also used. Boot
 - Google Fonts
 
 ### Final Page Image
-![Screenshot of the final application](./assets/screenshot.PNG)
+![Screenshot of the final application](./assets/images/screenshot.PNG)
+![Second screenshot of the final app](./assets/images/screenshot2.PNG)
 
 ### Github Link
 [Deployed application through Github](https://reversedentistry.github.io/Work-Day-Scheduler-with-Third-Party-API/)
+
+### Author
+**Sheryl Hu**
+- Email: sherylhu@proton.me
+
+### License
+Copyright (c) 2022 Sheryl Hu.
+This project is MIT licensed.
